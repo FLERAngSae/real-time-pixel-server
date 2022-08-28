@@ -4,17 +4,17 @@ import asyncio
 sio = socketio.AsyncServer()
 app = socketio.ASGIApp(sio)
 
-def makePixel():
-    x = input()
-    y = input()
-    color = input()
+def makePixel(x: int, y: int, color: str):
     with open("data/pixel_color.json") as pixel_json:
         pixel_color = json.load(pixel_json)
     pixel_color[x][y] = color
     with open('data/pixel_color.json', 'w') as f:
         json.dump(pixel_color, f)
 
-makePixel()
+makex = input()
+makey = input()
+makec = input()
+makePixel(int(makex), int(makey). makec)
 
 @sio.on('connect')
 def connect_handler(sid, environ):
