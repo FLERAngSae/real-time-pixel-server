@@ -14,7 +14,7 @@ def makePixel(x: str, y: str, color: str):
 makex = input()
 makey = input()
 makec = input()
-makePixel(int(makex), int(makey). makec)
+makePixel(makex, makey, makec)
 
 @sio.on('connect')
 def connect_handler(sid, environ):
