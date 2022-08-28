@@ -10,6 +10,7 @@ def makePixel(x: str, y: str, color: str):
     pixel_color[x][y] = color
     with open('data/pixel_color.json', 'w') as f:
         json.dump(pixel_color, f)
+    return pixel_color
 
 makex = input()
 makey = input()
@@ -20,6 +21,8 @@ makePixel(makex, makey, makec)
 def connect_handler(sid, environ):
 	print('connection request')
 
-@sio.on('color')
-def color_handler(data: list):
-	pass
+@sio.on('change')
+def color_handler(x: str, y: str, color: str):
+    pc = makePixel(x, y, color)
+    sio.emit('update', pc)
+
